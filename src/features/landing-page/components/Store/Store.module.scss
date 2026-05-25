@@ -344,10 +344,12 @@
     justify-content: center;
     backdrop-filter: blur(12px);
     padding: var(--space-4);
+    overflow-x: hidden;
 
     &__container {
       position: relative;
       width: 100%;
+      max-width: 100%;
       height: 100%;
       max-height: 90vh;
       display: flex;
@@ -414,7 +416,9 @@
       flex-direction: column;
       height: 100%;
       overflow-y: auto;
+      overflow-x: hidden;
       gap: var(--space-0);
+      width: 100%;
 
       @media (width >=768px) {
         flex-direction: row;
@@ -431,6 +435,7 @@
       justify-content: center;
       padding: var(--space-6);
       text-align: center;
+      width: 100%;
 
       // 9-Slice Border for Preview Card
       border-style: solid;
@@ -502,6 +507,8 @@
       flex-direction: column;
       padding: var(--space-6);
       min-height: 300px;
+      min-width: 0;
+      width: 100%;
 
       // 9-Slice Border for Details Card
       border-style: solid;
@@ -521,6 +528,7 @@
 
     &__tabs {
       display: flex;
+      flex-wrap: wrap;
       gap: var(--space-1);
       margin-bottom: var(--space-6);
       border-bottom: 2px solid rgb(255 255 255 / 5%);
@@ -532,14 +540,20 @@
       border: none;
       color: var(--color-text-muted);
       font-family: var(--font-family-title);
-      font-size: 0.95rem;
-      padding: var(--space-2) var(--space-4);
+      font-size: 0.85rem;
+      padding: var(--space-1) var(--space-3);
       cursor: pointer;
-      min-height: 44px;
+      min-height: 36px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       transition: color 0.2s ease;
+
+      @media (width >=768px) {
+        font-size: 0.95rem;
+        padding: var(--space-2) var(--space-4);
+        min-height: 44px;
+      }
 
       @media (hover: hover) {
         &:hover {
