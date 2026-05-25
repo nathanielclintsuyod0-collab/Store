@@ -1,0 +1,229 @@
+@use '@/styles/variables' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; // Distribute content properly
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
+  padding-top: max(var(--space-12), env(safe-area-inset-top));
+  padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to bottom,
+        rgb(15 2 20 / 15%),
+        rgb(15 2 20 / 60%)), url('@/assets/images/hero_background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: saturate(1.1) brightness(1.1);
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; // Take up available space
+    gap: var(--space-8); // Reduced gap for mobile
+    width: 100%;
+
+    @media (width >=1024px) {
+      gap: var(--space-12);
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  &__title {
+    margin-bottom: var(--space-4);
+  }
+
+  &__logo {
+    width: 100%;
+    max-width: clamp(400px, 60vw, 600px);
+    height: auto;
+    filter: drop-shadow(0 0 30px rgb(200 80 242 / 30%));
+  }
+
+  &__subtitle {
+    font-size: var(--font-base);
+    color: var(--color-text-muted);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__ipCard {
+    width: 100%;
+    aspect-ratio: 835 / 300;
+    background-image: url('@/assets/images/ip_button.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4) var(--space-8);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-4px) scale(1.02);
+        filter: brightness(1.1);
+      }
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    &--disabled {
+      cursor: default;
+      filter: grayscale(0.2) brightness(0.8);
+      pointer-events: none;
+    }
+  }
+
+  &__ipLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgb(255 255 255 / 60%);
+    margin-bottom: var(--space-1);
+    font-weight: 700;
+
+    @media (width >=640px) {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__ipButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    width: 100%;
+    color: #fff;
+    font-weight: 900;
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
+    font-family: var(--font-family-base);
+    text-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+  }
+
+  &__copyIcon {
+    font-size: 1rem;
+    opacity: 0.5;
+    transition: var(--transition-smooth);
+
+    &--active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4); // Increased gap for better text separation
+    font-size: 0.875rem;
+  }
+
+  &__statusIconGroup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: status-pulse 2s infinite ease-in-out;
+  }
+
+  &__playersIcon {
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 10px rgb(74 222 128 / 50%));
+  }
+
+  &__pingBadge {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 14px;
+    height: 14px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 5px rgb(74 222 128 / 60%));
+  }
+
+  &__scrollIndicator {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6); // Increased gap to clear the bobbing animation
+    opacity: 0.6;
+  }
+
+  &__scrollIcon {
+    width: 40px; // Larger size for better visibility
+    height: auto;
+    image-rendering: pixelated;
+    animation: bobbing 2s infinite ease-in-out;
+  }
+
+  &__scrollText {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+}
+
+@keyframes bobbing {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgb(74 222 128 / 50%));
+  }
+
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px rgb(74 222 128 / 60%));
+  }
+}

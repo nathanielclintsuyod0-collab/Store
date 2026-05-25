@@ -1,0 +1,163 @@
+@use '@/styles/variables' as *;
+
+.join {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: 8rem;
+  padding-bottom: var(--space-12);
+
+  @media (width >=1024px) {
+    padding-top: 12rem;
+    padding-bottom: var(--space-16);
+  }
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6); // Significantly tighter for mobile
+    width: 100%;
+
+    @media (width >=1024px) {
+      gap: var(--space-24); // Keep wide for desktop
+    }
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: var(--font-family-title);
+    font-size: var(--font-h1);
+    margin-bottom: var(--space-4);
+    color: white;
+  }
+
+  &__subtitle {
+    color: var(--color-text-muted);
+    font-size: var(--font-base);
+    max-width: 50ch;
+    margin-inline: auto;
+  }
+
+  &__visualWrapper {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    padding-top: 100px; // Reduced headroom for mobile mascot
+
+    @media (width >=1024px) {
+      padding-top: 220px;
+    }
+  }
+
+  &__panelContainer {
+    position: relative;
+    width: 100%;
+  }
+
+  &__panel {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    image-rendering: pixelated; // Industry standard for sharp Minecraft assets
+    image-rendering: crisp-edges;
+    transform: translateZ(0); // Boost hardware rendering sharpness
+    box-shadow:
+      0 20px 50px rgb(0 0 0 / 50%),
+      0 0 0 1px rgb(255 255 255 / 10%);
+    display: block;
+  }
+
+  &__skinWave {
+    position: absolute;
+    top: auto;
+    bottom: 100%; // Sits exactly on top of the border
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(160px, 40vw, 450px);
+    height: auto;
+    z-index: 3;
+    filter: drop-shadow(0 10px 30px rgb(0 0 0 / 50%));
+
+    @media (width >=1024px) {
+      bottom: 100%;
+    }
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    width: 100%;
+
+    @media (width >=1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-12);
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-8);
+    position: relative;
+    
+    // 9-Slice Shulker Box Container
+    border-style: solid;
+    border-width: 12px; // Visual thickness of the frame
+    border-image-source: url('@/assets/images/container_shulker_box_white.png');
+    border-image-slice: 4 fill; // 4px corners, fill centers
+    border-image-width: 12px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 10px 20px rgb(0 0 0 / 40%));
+    transition: var(--transition-smooth);
+
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-4px);
+        filter: drop-shadow(0 15px 30px rgb(0 0 0 / 60%)) brightness(1.1);
+      }
+    }
+  }
+
+  &__step-number {
+    font-family: var(--font-family-title);
+    font-size: 2.5rem; // Significantly larger raw text
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  &__step-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  &__step-title {
+    font-family: var(--font-family-title);
+    font-size: 1.5rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__step-description {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,31 @@
+.button {
+  display: inline-flex;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &__text {
+    font-weight: 600;
+  }
+
+  &--primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+
+    &:hover {
+      background-color: #f0f7ff;
+    }
+  }
+}

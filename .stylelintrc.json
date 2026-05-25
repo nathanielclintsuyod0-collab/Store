@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    "stylelint-selector-bem-pattern"
+  ],
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "plugin/selector-bem-pattern": {
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:__[a-z0-9-]+)?(?:--[a-z0-9-]+)?$"
+      },
+      "ignoreSelectors": [
+        "active",
+        "focus"
+      ]
+    },
+    "selector-class-pattern": [
+      "^[a-z]([a-z0-9-]+)?(__[a-z0-9-]+)?(--[a-z0-9-]+)?$",
+      {
+        "resolveNestedSelectors": true,
+        "message": "Expected class selector to match BEM pattern (block__element--modifier)"
+      }
+    ]
+  }
+}
