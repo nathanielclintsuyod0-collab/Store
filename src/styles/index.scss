@@ -32,6 +32,8 @@ h1, h2, h3 {
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 button {
@@ -39,12 +41,17 @@ button {
   border: none;
   cursor: pointer;
   font: inherit;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 // Utility Classes
