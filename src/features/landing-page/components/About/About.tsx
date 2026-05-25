@@ -4,7 +4,7 @@ import aboutTitleImg from '@/assets/images/about_title.png';
 import peacefulTitle from '@/assets/images/peacefule_friendly_title.png';
 import economyTitle from '@/assets/images/dynamic_economy_title.png';
 import eventsTitle from '@/assets/images/community_events_title.png';
-import poppyIcon from '@/assets/images/poppy.png';
+import poppyIcon from '@/assets/images/Poppy.png';
 import minecoinIcon from '@/assets/images/minecoin.png';
 import swordIcon from '@/assets/images/diamond_sword.png';
 import { clsx } from 'clsx';
