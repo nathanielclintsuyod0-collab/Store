@@ -13,10 +13,10 @@ export const Button = ({ variant = 'primary', children, onClick }: ButtonProps) 
       onClick={onClick}
       className={clsx(
         styles.button,
-        styles[`button--${variant}`]
+        variant === 'primary' ? styles.buttonPrimary : styles.buttonOutline
       )}
     >
-      <span className={styles.button__text}>{children}</span>
+      <span className={styles.buttonText}>{children}</span>
     </button>
   );
 };
